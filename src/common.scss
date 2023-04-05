@@ -1,0 +1,23 @@
+$primaryColor: #FFF;
+$secondaryColor: black;
+$tertriaryColor: grey;
+
+body {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #CCC;
+    color: #E4E6EB;
+}
+
+.container {
+    font-family: Poppins;
+    width:428px;
+    margin:auto;
+    background-color: #1C1E21;
+}
+.wrapper {
+    padding: 0 24px 0;
+}
+
+
