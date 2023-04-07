@@ -1,26 +1,32 @@
 .middle {
-    
-    &__h2{
+
+    &__category {
         font-size: 16px;
         font-weight: 700;
         line-height: 22px;
         letter-spacing: -0.02em;
         margin-bottom: 16px;
+        height: 30px;
     }
 
-    &__{
-        
+    &__photo {
+        object-fit: cover;
+        width: 100%;
+        border-radius: 6px;
     }
 
-    &__{
-        
+    &__place {
+        font-size: 14px;
+        line-height: 21px;
+        margin: 16px 0 4px;
     }
 
-    &__{
-        
+    &__title {
+        font-size: 24px;
+        line-height: 36px;
     }
 
-    &__{
-        
+    &__description {
+        font-size: 16px;
     }
 }
