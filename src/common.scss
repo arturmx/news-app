@@ -18,9 +18,20 @@ body {
     width:428px;
     margin:auto;
     background-color: #1C1E21;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
 }
 .wrapper {
     padding: 0 24px 0;
+}
+.item {
+    margin-bottom: 70px;
+
+    &:nth-child(1) {
+        display: none;
+    }
 }
 
 
