@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './middle.scss';
+import no_photo from './no-photo.jpg';
 
 const Middle = function() {
   let [data, setData] = useState([]);
@@ -7,7 +8,7 @@ const Middle = function() {
   //   8O2f06YEeOpoZ0FP0pr3MbkWoDE3DeX8
   //   CmVVCGlwUVoDbtX59c6f0u7kR0fAfcBI
   //   2CxKOCm170DAig3ccKboNG2NV0vhmPOo
-  let keyApi = '8O2f06YEeOpoZ0FP0pr3MbkWoDE3DeX8'
+  let keyApi = 'CmVVCGlwUVoDbtX59c6f0u7kR0fAfcBI'
 
   const getData = function() {
     fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${keyApi}`)
@@ -28,6 +29,7 @@ const Middle = function() {
           {data.map(function(el) {
             const place = el.geo_facet[0] || el.subsection || 'United States';
             const category = el.des_facet[1] || el.des_facet[0];
+            const photo = el.multimedia === null ? no_photo : el.multimedia[1].url;
 
             return (
               <div className="item">
@@ -42,7 +44,7 @@ const Middle = function() {
                     <p className="middle__place">{(el.updated_date).substring(11,16)}</p>
                   </div>
                 </div>
-                <img className="middle__photo" src= {el.multimedia[1].url} alt={el.title} />
+                <img className="middle__photo" src= {photo} alt={el.title} />
                 <h2 className="middle__title">{el.title}</h2>
                 <p className="middle__description">{el.abstract}</p>
                 <a href={el.url} target="_blank">Read More</a>
