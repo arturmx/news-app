@@ -4,35 +4,78 @@ import no_photo from './no-photo.jpg';
 
 const Middle = function() {
   let [data, setData] = useState([]);
+  let [section, setSection] = useState('world');
 
   //   8O2f06YEeOpoZ0FP0pr3MbkWoDE3DeX8
   //   CmVVCGlwUVoDbtX59c6f0u7kR0fAfcBI
   //   2CxKOCm170DAig3ccKboNG2NV0vhmPOo
-  let keyApi = 'CmVVCGlwUVoDbtX59c6f0u7kR0fAfcBI'
-
-  const getData = function() {
-    fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${keyApi}`)
+  let keyApi = '2CxKOCm170DAig3ccKboNG2NV0vhmPOo'
+  let h1 = 'World';
+  const getData = function(cat) {
+    fetch(`https://api.nytimes.com/svc/topstories/v2/${cat}.json?api-key=${keyApi}`)
     .then((response) => response.json())
     .then((dataObj) => setData(dataObj.results));
   }
   
   useEffect(function() {
-    getData();
+    getData(section);
   }, []);
 
   console.log(data);
+
+  const handleClick = function() {
+    setOpen(true);
+  }
+
+  let [open, setOpen] = useState(false);
 
   return (
     <div className="middle">
         <div className="container">
           <div className="wrapper">
-          {data.map(function(el) {
+          {open && 
+          <ul className="middle__nav">
+            <li onClick={function(){
+              setSection('world');
+              setOpen(false);
+              getData('world');
+            }}>World</li>
+            <li onClick={function(){
+              setSection('arts');
+              setOpen(false);
+              getData('arts');
+            }}>Arts</li>
+            <li>Automobiles</li>
+            <li>Business</li>
+            <li>Health</li>
+            <li>Fashion</li>
+            <li>Food</li>
+            <li>Movies</li>
+            <li>Politics</li>
+            <li>Science</li>
+            <li>Sports</li>
+            <li>Technology</li>
+            <li>Travel</li>
+          </ul>
+          }
+            <div className="middle__top">
+              <h1 className="middle__h1">{section} News</h1>
+              <div className="middle__button" onClick={handleClick}>
+                <div className="middle__line1"></div>
+                <div className="middle__line2"></div>
+              </div>
+            </div>
+          {data && data.map(function(el) {
             const place = el.geo_facet[0] || el.subsection || 'United States';
             const category = el.des_facet[1] || el.des_facet[0];
-            const photo = el.multimedia === null ? no_photo : el.multimedia[1].url;
+            const photo = el.multimedia ? el.multimedia[1].url : no_photo ;
+
+            if (!el.title || !category) {
+              return null;
+            }
 
             return (
-              <div className="item">
+              <div className="item" key={el.url}>
                 <h2 className="middle__category">{category}</h2>
                 <div className="middle__timeplace">
                   <h3 className="middle__place">{place}</h3>

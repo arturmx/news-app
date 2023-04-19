@@ -1,5 +1,56 @@
 .middle {
 
+    position: relative;
+
+    &__top {
+        display: flex;
+        padding: 24px 0 40px;
+        justify-content: space-between;
+    }
+
+    &__h1{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 48px;
+        letter-spacing: 0.12px;
+        text-align: center;
+    }
+
+    &__button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    &__line1 {
+        height:2px;
+        width: 20px;
+        background-color: #FFF;
+    }
+
+    &__line2 {
+        height:2px;
+        width: 20px;
+        background-color: #FFF;
+    }
+
+    &__nav {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #1C1E21;
+        width: 100%;
+        height: 100vh;
+
+        li {
+            margin-bottom: 20px;
+        }
+    }
+
     &__category {
         font-size: 16px;
         font-weight: 700;
