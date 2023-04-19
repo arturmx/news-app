@@ -6,6 +6,8 @@ const Middle = function() {
   let [data, setData] = useState([]);
   let [section, setSection] = useState('world');
 
+  const keyApi = [];
+
   //   8O2f06YEeOpoZ0FP0pr3MbkWoDE3DeX8
   //   CmVVCGlwUVoDbtX59c6f0u7kR0fAfcBI
   //   2CxKOCm170DAig3ccKboNG2NV0vhmPOo
@@ -14,7 +16,11 @@ const Middle = function() {
   const getData = function(cat) {
     fetch(`https://api.nytimes.com/svc/topstories/v2/${cat}.json?api-key=${keyApi}`)
     .then((response) => response.json())
-    .then((dataObj) => setData(dataObj.results));
+    .then((dataObj) => setData(dataObj.results))
+    .catch((error) => {
+      console.log(error);
+      fetch(`https://api.nytimes.com/svc/topstories/v2/${cat}.json?api-key=${keyApi}`)
+    })
   }
   
   useEffect(function() {
