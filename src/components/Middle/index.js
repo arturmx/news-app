@@ -119,7 +119,6 @@ const Middle = function() {
               <h1 className="middle__h1">{section.charAt(0).toUpperCase() + section.slice(1)} News</h1>
               <Hamburger toggled={open} toggle={setOpen} />
             </div>
-            <div className="header-fix"></div>
           {data && data.map(function(el) {
             const place = el.geo_facet[0] || el.subsection || 'United States';
             const category = el.des_facet[1] || el.des_facet[0];

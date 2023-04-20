@@ -5,10 +5,13 @@
         display: flex;
         padding: 24px 0 40px;
         justify-content: space-between;
-        position: fixed;
+        position: sticky;
         background-color: #1C1E21;
         width: 100%;
         z-index: 99;
+        box-sizing: border-box;
+        left: 0;
+        top: 0;
     }
 
     &__h1{
